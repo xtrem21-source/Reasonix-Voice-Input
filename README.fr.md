@@ -28,7 +28,7 @@
 >
 > **Méthode portable.** Le même module et la même démarche en 8 étapes s'appliquent à d'autres
 > applications Electron. Reasonix Studio est la cible actuelle ; AionUi 2.2.2 est couverte par
-> [`AiTron-Voice-Input`](https://github.com/Xtrem-21/AiTron-Voice-Input) avec la même méthode.
+> [`AionUi-Voice-Input`](https://github.com/xtrem21-source/AionUi-Voice-Input) avec la même méthode.
 > Voir §10 et [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) / [`docs/DEMARCHE.md`](docs/DEMARCHE.md) (FR).
 
 ---

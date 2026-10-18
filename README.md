@@ -24,7 +24,7 @@
 
 > **Portable method.** The same module and the same 8-step method apply to other Electron chat
 > apps. Reasonix Studio is the current target; AionUi 2.2.2 is supported by
-> [`AiTron-Voice-Input`](https://github.com/Xtrem-21/AiTron-Voice-Input) using the same method.
+> [`AionUi-Voice-Input`](https://github.com/xtrem21-source/AionUi-Voice-Input) using the same method.
 
 | | |
 |---|---|
