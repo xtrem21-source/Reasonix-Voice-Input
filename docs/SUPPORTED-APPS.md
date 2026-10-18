@@ -7,10 +7,10 @@ sélecteurs, le stockage et le preload changent.
 
 | Application | Interface | Type de patch | État |
 |---|---|---|---|
-| **Reasonix Studio 2.40.0** | `resources\frontend-next\dist` (plain) | copie de `voice-input.js` + une balise `<script>` | **porté et validé** (micro, clé, envoi, file) |
-| **Cline Desktop** | application Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
-| **Open Cowork** | application Electron | même module + sélecteurs | **porté** (base d'origine) |
-| **AionUi 2.2.2** | `resources\app.asar` | repack asar avec `--unpack-dir` / `--unpack`, préservation de `app.asar.unpacked` | **porté et validé** sur Windows |
+| **[Reasonix Studio 2.40.0](https://github.com/esengine/DeepSeek-Reasonix)** | `resources\frontend-next\dist` (plain) | copie de `voice-input.js` + une balise `<script>` | **porté et validé** (micro, clé, envoi, file) |
+| **[Cline Desktop](https://github.com/cline/cline)** | application Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
+| **[Open Cowork](https://github.com/open-cowork/open-cowork)** | application Electron | même module + sélecteurs | **porté** (base d'origine) |
+| **[AionUi 2.2.2](https://github.com/iOfficeAI/AionUi)** | `resources\app.asar` | repack asar avec `--unpack-dir` / `--unpack`, préservation de `app.asar.unpacked` | **porté et validé** sur Windows |
 
 **Ce n'est pas une contrainte :** il n'y a que **quelques petits réglages d'ancrage** dans la
 fenêtre de chat (position à côté ou au-dessus de la flèche d'envoi). Le reste du module est
@@ -42,10 +42,10 @@ storage and preload APIs change.
 
 | App | UI | Patch type | State |
 |---|---|---|---|
-| **Reasonix Studio 2.40.0** | `resources\frontend-next\dist` (plain) | copy `voice-input.js` + one `<script>` tag | **ported and validated** (mic, key, send, queue) |
-| **Cline Desktop** | Electron app | same module + selectors | **ported**; anchoring to adjust |
-| **Open Cowork** | Electron app | same module + selectors | **ported** (original base) |
-| **AionUi 2.2.2** | `resources\app.asar` | asar repack with `--unpack-dir` / `--unpack`, preserve `app.asar.unpacked` | **ported and validated** on Windows |
+| **[Reasonix Studio 2.40.0](https://github.com/esengine/DeepSeek-Reasonix)** | `resources\frontend-next\dist` (plain) | copy `voice-input.js` + one `<script>` tag | **ported and validated** (mic, key, send, queue) |
+| **[Cline Desktop](https://github.com/cline/cline)** | Electron app | same module + selectors | **ported**; anchoring to adjust |
+| **[Open Cowork](https://github.com/open-cowork/open-cowork)** | Electron app | same module + selectors | **ported** (original base) |
+| **[AionUi 2.2.2](https://github.com/iOfficeAI/AionUi)** | `resources\app.asar` | asar repack with `--unpack-dir` / `--unpack`, preserve `app.asar.unpacked` | **ported and validated** on Windows |
 
 **This is not a constraint:** only a **few small anchoring adjustments** are needed in the
 chat window (position beside or above the send arrow). The rest of the module is identical.

@@ -4,6 +4,8 @@
 [![Licence : MIT](https://img.shields.io/github/license/xtrem21-source/Reasonix-Voice-Input)](LICENSE)
 [![Plateforme : Windows](https://img.shields.io/badge/platform-Windows-0078D4)](#)
 [![Non officiel](https://img.shields.io/badge/status-unofficial-orange)](#)
+[![Gemini](https://img.shields.io/badge/transcription-Gemini-4285F4)](https://deepmind.google/technologies/gemini/)
+[![Applications](https://img.shields.io/badge/apps-4-2f81f7)](docs/SUPPORTED-APPS.md)
 
 > **Micro de dictée pour applications Electron :** Gemini transcrit, insère et envoie
 > (auto ou manuel), avec pièces jointes, file d'attente et menu caché au clic droit. Porté
@@ -228,10 +230,10 @@ les API du preload changent. La démarche en 8 étapes est la même.
 
 | Application | Interface | Type de patch | État |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copie + une balise `<script>` | **porté et validé** |
-| Cline Desktop | application Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
-| Open Cowork | application Electron | même module + sélecteurs | **porté** (base) |
-| AionUi 2.2.2 | `resources\app.asar` | repack asar avec `--unpack` | **porté et validé** |
+| [Reasonix Studio 2.40.0](https://github.com/esengine/DeepSeek-Reasonix) | `frontend-next\dist` (plain) | copie + une balise `<script>` | **porté et validé** |
+| [Cline Desktop](https://github.com/cline/cline) | application Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
+| [Open Cowork](https://github.com/open-cowork/open-cowork) | application Electron | même module + sélecteurs | **porté** (base) |
+| [AionUi 2.2.2](https://github.com/iOfficeAI/AionUi) | `resources\app.asar` | repack asar avec `--unpack` | **porté et validé** |
 
 Les 8 étapes génériques sont dans [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) et
 [`docs/DEMARCHE.md`](docs/DEMARCHE.md) (FR). En résumé :

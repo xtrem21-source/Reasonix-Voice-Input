@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/github/license/xtrem21-source/Reasonix-Voice-Input)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D4)](#)
 [![Unofficial](https://img.shields.io/badge/status-unofficial-orange)](#)
+[![Gemini](https://img.shields.io/badge/transcription-Gemini-4285F4)](https://deepmind.google/technologies/gemini/)
+[![Apps](https://img.shields.io/badge/apps-4-2f81f7)](docs/SUPPORTED-APPS.md)
 
 > **Voice-input mic for Electron chat apps:** Gemini transcribes, inserts and sends (auto or
 > manual), with attachments, queue and a hidden right-click menu. Ported to Reasonix Studio,
@@ -138,10 +140,10 @@ The module is app-agnostic; only the selectors, storage keys and preload APIs ch
 
 | App | UI location | Patch type | State |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copy + one script tag | **ported and validated** |
-| Cline Desktop | Electron app | same module + selectors | **ported**; anchoring to adjust |
-| Open Cowork | Electron app | same module + selectors | **ported** (base) |
-| AionUi 2.2.2 | `resources\app.asar` | asar repack with `--unpack` | **ported and validated** |
+| [Reasonix Studio 2.40.0](https://github.com/esengine/DeepSeek-Reasonix) | `frontend-next\dist` (plain) | copy + one script tag | **ported and validated** |
+| [Cline Desktop](https://github.com/cline/cline) | Electron app | same module + selectors | **ported**; anchoring to adjust |
+| [Open Cowork](https://github.com/open-cowork/open-cowork) | Electron app | same module + selectors | **ported** (base) |
+| [AionUi 2.2.2](https://github.com/iOfficeAI/AionUi) | `resources\app.asar` | asar repack with `--unpack` | **ported and validated** |
 
 The 8 generic steps are in [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) and
 [`docs/DEMARCHE.md`](docs/DEMARCHE.md) (FR):
