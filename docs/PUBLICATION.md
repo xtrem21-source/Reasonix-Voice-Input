@@ -6,7 +6,7 @@
 |---|---|
 | Nom du dépôt | **`Reasonix-Voice-Input`** |
 | Compte | **`xtrem21-source`** (vérifié : `git ls-remote` répond et le credential Git local existe) |
-| Visibilité | **privé** |
+| Visibilité | **public** |
 | Licence | **MIT** (`LICENSE`) |
 | Documentation | FR/EN : README, tutoriel, inspection, méthode, problèmes/solutions, version, journal, changelog, sécurité, publication, applications supportées |
 | `index.html` de l'application | **non livré** : fichier tiers, licence de l'app non documentée ; recréable localement (voir `docs/reference/README.md`) |
@@ -33,7 +33,7 @@ Avec GitHub CLI (si le dépôt n'existe pas encore) :
 gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote origin --push
 ```
 
-Le dépôt privé `xtrem21-source/Reasonix-Voice-Input` est **publié** (branche `main`,
+Le dépôt public `xtrem21-source/Reasonix-Voice-Input` est **publié** (branche `main`,
 commit `3d44a1c`, 2026-10-18) et accessible avec le credential Git local.
 
 ## English
@@ -42,7 +42,7 @@ commit `3d44a1c`, 2026-10-18) et accessible avec le credential Git local.
 |---|---|
 | Repository name | **`Reasonix-Voice-Input`** |
 | Account | **`xtrem21-source`** (verified: `git ls-remote` answers and the local Git credential exists) |
-| Visibility | **private** |
+| Visibility | **public** |
 | License | **MIT** (`LICENSE`) |
 | Documentation | FR/EN: README, tutorial, inspection, method, problems/solutions, version, journal, changelog, security, publication, supported apps |
 | App `index.html` | **not shipped**: third-party file, app license undocumented; recreate locally (see `docs/reference/README.md`) |
@@ -70,5 +70,5 @@ With GitHub CLI (if the repo does not exist yet):
 gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote origin --push
 ```
 
-The private `xtrem21-source/Reasonix-Voice-Input` repository is **published** (`main` branch,
+The public `xtrem21-source/Reasonix-Voice-Input` repository is **published** (`main` branch,
 commit `3d44a1c`, 2026-10-18) and accessible with the local Git credential.
