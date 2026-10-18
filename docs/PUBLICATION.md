@@ -22,7 +22,7 @@ l'app). L'export publiable est un dossier séparé `Reasonix-Voice-Input-publish
 sans `logs/`, sans `old/` (sauf `.gitkeep`), sans `docs/reference/ReasonixStudio-*.html`.
 
 ```powershell
-cd C:\Users\Xtrem-21\Desktop\open-cowork-micro\Reasonix-Voice-Input-publish
+cd $env:USERPROFILE\Desktop\open-cowork-micro\Reasonix-Voice-Input-publish
 git remote add origin https://github.com/Xtrem-21/Reasonix-Voice-Input.git
 git push -u origin main
 ```
@@ -58,7 +58,7 @@ without `logs/`, without `old/` (except `.gitkeep`), without
 `docs/reference/ReasonixStudio-*.html`.
 
 ```powershell
-cd C:\Users\Xtrem-21\Desktop\open-cowork-micro\Reasonix-Voice-Input-publish
+cd $env:USERPROFILE\Desktop\open-cowork-micro\Reasonix-Voice-Input-publish
 git remote add origin https://github.com/Xtrem-21/Reasonix-Voice-Input.git
 git push -u origin main
 ```
