@@ -33,8 +33,8 @@ Avec GitHub CLI (si le dépôt n'existe pas encore) :
 gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote origin --push
 ```
 
-Le dépôt privé `xtrem21-source/Reasonix-Voice-Input` existe déjà (vide) et est accessible
-avec le credential Git local. **Rien n'est publié tant que l'utilisateur n'a pas donné son GO.**
+Le dépôt privé `xtrem21-source/Reasonix-Voice-Input` est **publié** (branche `main`,
+commit `3d44a1c`, 2026-10-18) et accessible avec le credential Git local.
 
 ## English
 
@@ -70,5 +70,5 @@ With GitHub CLI (if the repo does not exist yet):
 gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote origin --push
 ```
 
-The private `xtrem21-source/Reasonix-Voice-Input` repository already exists (empty) and is
-accessible with the local Git credential. **Nothing is published until the user gives the GO.**
+The private `xtrem21-source/Reasonix-Voice-Input` repository is **published** (`main` branch,
+commit `3d44a1c`, 2026-10-18) and accessible with the local Git credential.
