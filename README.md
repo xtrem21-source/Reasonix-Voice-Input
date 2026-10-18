@@ -1,8 +1,8 @@
 # Reasonix Voice Input
 
-> **Unofficial voice-input patch for Reasonix Studio 2.40.0** — record, transcribe with Gemini,
-> insert into the composer. The repository contains the module, the patcher, install/rollback
-> scripts, and the traceability needed to reapply it after an update.
+> **Voice-input mic for Electron chat apps:** Gemini transcribes, inserts and sends (auto or
+> manual), with attachments, queue and a hidden right-click menu. Ported to Reasonix Studio,
+> Cline Desktop, Open Cowork and AionUi.
 >
 > **Start here:** [Tutorial](TUTORIAL.md) · [Tutoriel (FR)](TUTORIEL.fr.md).
 
@@ -178,6 +178,11 @@ The 8 generic steps are in [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) and
 | [`CHANGELOG.md`](CHANGELOG.md) / [`CHANGELOG.fr.md`](CHANGELOG.fr.md) | versions — EN/FR |
 | [`docs/PUBLICATION.md`](docs/PUBLICATION.md) | publication checklist — FR/EN |
 | [`SECURITY.md`](SECURITY.md) | key handling and reporting — FR/EN |
+
+## Tags
+
+`voice-input` · `speech-to-text` · `dictation` · `gemini` · `electron` · `reasonix-studio` ·
+`cline-desktop` · `open-cowork` · `aionui` · `productivity` · `accessibility` · `windows`
 
 ## License
 

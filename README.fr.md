@@ -1,9 +1,8 @@
 # Reasonix Voice Input
 
-> **Bouton micro pour Reasonix Studio** — enregistre ta voix, la transcrit avec Gemini et
-> l'insère dans le composeur. Ce dossier contient **le patch, le module, les scripts
-> d'installation et la traçabilité** nécessaires pour le réappliquer après une réinstallation
-> ou une mise à jour de Reasonix Studio.
+> **Micro de dictée pour applications Electron :** Gemini transcrit, insère et envoie
+> (auto ou manuel), avec pièces jointes, file d'attente et menu caché au clic droit. Porté
+> sur Reasonix Studio, Cline Desktop, Open Cowork et AionUi.
 >
 > **Commence ici :** [Tutoriel (FR)](TUTORIEL.fr.md) · [Tutorial (EN)](TUTORIAL.md).
 
@@ -247,6 +246,11 @@ C'est l'atout principal du module ; Windows reste un repli hors ligne / sans cl�
 [`AGENT-PLAYBOOK.md`](AGENT-PLAYBOOK.md) (EN) est une feuille de route à copier-coller. Elle
 couvre ~95 % du portage ; les 5 % restants sont les sélecteurs exacts et les mesures d'ancrage
 — de petits réglages, pas une contrainte.
+
+## Tags
+
+`voice-input` · `speech-to-text` · `dictation` · `gemini` · `electron` · `reasonix-studio` ·
+`cline-desktop` · `open-cowork` · `aionui` · `productivity` · `accessibility` · `windows`
 
 ## 11. Licence
 
