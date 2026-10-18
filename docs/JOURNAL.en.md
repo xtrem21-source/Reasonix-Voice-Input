@@ -39,5 +39,11 @@
 - **Publication prep** — repo name `Reasonix-Voice-Input`; MIT license; FR/EN docs; generic
   8-step methodology for other Electron apps; app `index.html` **not** redistributed; personal
   path sanitized; clean export from the working tree (no app HTML in history).
+- **Documentation / porting** — added **Cline Desktop** to the ported apps, alongside Reasonix
+  Studio, Open Cowork and AionUi. Only **a few small anchoring adjustments** in the chat window
+  are needed; this is not a constraint. Added a **Gemini / Windows Win+H** comparison
+  (accuracy, punctuation, languages, offline, cost): Gemini is the main quality advantage.
+  Added the **agent playbook FR/EN** (`FICHE-AGENT.fr.md` / `AGENT-PLAYBOOK.md`): 8 phases,
+  starter prompt, 95% checklist, acceptance criteria.
 - **To validate in the app** — runtime CSP, mic permission, Gemini fetch, send during
   generation, attachment + auto-send. Reasonix Studio was not closed during inspection.

@@ -81,10 +81,19 @@ survive an app update.
 
 ## Portability table
 
-| App | UI | Patch | Repo |
+| App | UI | Patch | State |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` | copy + script tag | this repo |
-| AionUi 2.2.2 | `resources\app.asar` | asar repack | `AiTron-Voice-Input` |
-| Open Cowork | Electron | same module | `AiTron-Voice-Input` (base) |
+| Reasonix Studio 2.40.0 | `frontend-next\dist` | copy + script tag | **ported and validated** |
+| Cline Desktop | Electron | same module + selectors | **ported**; anchoring to adjust |
+| Open Cowork | Electron | same module | **ported** (base) |
+| AionUi 2.2.2 | `resources\app.asar` | asar repack | **ported and validated** |
+
+The port is **~95% generic**. The last 5% are the exact selectors and anchoring measurements —
+small adjustments, not a constraint. For a ready-to-use agent roadmap, see
+[`AGENT-PLAYBOOK.md`](AGENT-PLAYBOOK.md) (EN) / [`FICHE-AGENT.fr.md`](FICHE-AGENT.fr.md) (FR).
+
+**Why Gemini?** Its transcription is significantly more accurate and better punctuated than
+Windows dictation (**Win+H**), especially for technical terms and long messages. Windows
+remains an offline/no-key fallback.
 
 French version: [`DEMARCHE.md`](DEMARCHE.md). Supported apps: [`SUPPORTED-APPS.md`](SUPPORTED-APPS.md).

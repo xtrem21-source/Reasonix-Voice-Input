@@ -3,6 +3,20 @@
 All notable changes to this patch package are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.3] — 2026-10-18
+
+### Added
+- **Agent playbook FR/EN**: `FICHE-AGENT.fr.md` / `AGENT-PLAYBOOK.md` — 8-phase roadmap,
+  copy-paste starter prompt, 95% checklist, acceptance criteria, known traps.
+- **Cline Desktop** listed as ported (small anchoring adjustments, not a constraint).
+- **Feature contract** in README/tutorial/playbook: manual vs auto-send, attachments, queue,
+  force/fallback, hidden right-click menu.
+- **Gemini vs Windows Win+H** comparison: accuracy, punctuation, languages, offline, cost.
+  Gemini is the module's main quality advantage; Windows is the offline/no-key fallback.
+
+### Changed
+- README, tutorial and supported-apps tables updated for the four ports.
+
 ## [0.1.2] — 2026-10-18
 
 ### Added

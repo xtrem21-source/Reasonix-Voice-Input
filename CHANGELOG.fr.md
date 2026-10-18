@@ -3,6 +3,20 @@
 Les changements notables de ce package sont documentés ici.
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.3] — 2026-10-18
+
+### Ajouté
+- **Feuille de route agent FR/EN** : `FICHE-AGENT.fr.md` / `AGENT-PLAYBOOK.md` — 8 phases,
+  prompt de départ à copier-coller, checklist 95 %, critères d'acceptation, pièges connus.
+- **Cline Desktop** listé comme porté (petits réglages d'ancrage, pas une contrainte).
+- **Contrat de fonctionnalités** dans README/tutoriel/fiche agent : mode manuel vs envoi
+  automatique, pièces jointes, file d'attente, forçage/secours, menu caché au clic droit.
+- **Comparaison Gemini / Windows Win+H** : précision, ponctuation, langues, hors ligne, coût.
+  Gemini est le principal avantage qualité ; Windows reste le repli hors ligne / sans clé.
+
+### Modifié
+- README, tutoriel et applications supportées mis à jour pour les quatre ports.
+
 ## [0.1.2] — 2026-10-18
 
 ### Ajouté

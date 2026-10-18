@@ -12,6 +12,11 @@ Ce n'est pas une application séparée, pas un serveur, pas un compte à créer.
 JavaScript léger** (environ 66 Ko) ajouté à l'interface de l'application, plus un patcher pour
 l'installer et revenir en arrière.
 
+> **Le gros avantage :** la transcription passe par **Gemini**, dont la reconnaissance est
+> nettement plus précise et mieux ponctuée que la dictée intégrée de Windows (**Win+H**),
+> surtout pour les termes techniques, les noms propres et les messages longs. C'est le cœur
+> du module : une dictée de qualité, sans dépendre du moteur local de Windows.
+
 ## 2. À quoi ça sert ?
 
 | Situation | Ce que le module apporte |
@@ -77,15 +82,27 @@ message public.
 
 ## 7. Utiliser
 
-| Geste | Effet |
+| Geste / mode | Effet |
 |---|---|
 | **Clic** sur le micro | démarre l'enregistrement ; le bouton devient « stop » |
 | **Clic** à nouveau | arrête, transcrit, insère le texte |
-| **Clic droit** | ouvre les réglages (clé, modèle, langue, options) |
-| **Envoi automatique** | si activé, le message part à la fin de la transcription |
+| **Clic droit** | ouvre le **menu caché** : clé, modèle, langue, insertion auto, envoi auto, mot-clé |
+| **Mode manuel** (envoi auto OFF) | le texte est inséré ; tu le relis, tu le modifies, tu envoies toi-même |
+| **Mode automatique** (envoi auto ON) | le texte est inséré **et envoyé tout seul** à la fin de la transcription |
+| **Pièce jointe** | joins le fichier avant de dicter ; le texte **et** le fichier partent ensemble |
+| **Agent occupé** | le message est **mis en file d'attente** ; plusieurs messages peuvent attendre |
+| **Forcer** | si le bouton reste grisé, le module réessaie ~2 s, puis affiche l'erreur et copie le texte ; tu peux cliquer envoyer/file |
 | **Mot-clé d'envoi** | si activé, un mot à la fin (ex. « envoyer ») déclenche l'envoi |
-| **Pièce jointe** | joins le fichier avant de dicter ; le texte et le fichier partent ensemble |
-| **Agent occupé** | le message part en file d'attente si l'application le permet |
+
+**La particularité du programme :** un seul micro **dans le chat**, un **menu caché au clic
+droit**, les modes **manuel / automatique**, les **pièces jointes**, la **file d'attente** et
+la possibilité de **forcer**. Selon l'application, la file se vide automatiquement (Reasonix)
+ou demande un envoi manuel pour les messages suivants (AionUi) ; dans tous les cas, tu peux
+forcer ou envoyer à la main.
+
+> **Le gros avantage :** Gemini transcrit mieux que Win+H, et le couple envoi automatique /
+> file / pièces jointes permet de dicter plusieurs messages sans toucher la souris — tout en
+> gardant le mode manuel pour relire.
 
 ## 8. Réglages
 
@@ -125,6 +142,20 @@ démarrer l'application.
 
 ## 11. Variante Windows / locale
 
+### Pourquoi Gemini plutôt que Win+H ?
+
+| Critère | Gemini via le module | Dictée Windows (Win+H) |
+|---|---|---|
+| Précision | **nettement meilleure** : contexte, phrases longues | correcte sur des phrases simples |
+| Ponctuation / majuscules | gérées par le modèle | irrégulières |
+| Langues | multilingue | dépend des packs installés |
+| Termes techniques / noms propres | meilleur contexte | plus approximatif |
+| Hors ligne | non (Internet + clé) | oui |
+| Coût | palier gratuit Gemini | inclus dans Windows |
+
+C'est le **gros avantage** du module : pour dictée réelle, Gemini est plus fiable que Win+H.
+Windows reste un bon repli hors ligne ou sans clé.
+
 Le backend de transcription est **remplaçable**. Aujourd'hui : Gemini. Demain, si tu veux
 supprimer la clé et/ou Internet, on peut brancher :
 
@@ -143,14 +174,17 @@ promesse.
 
 ## 12. Autres applications
 
-| Application | Interface | Patch | Dépôt |
+| Application | Interface | Patch | État |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` | copie + balise | ce dépôt |
-| AionUi 2.2.2 | `app.asar` | repack asar | `AiTron-Voice-Input` |
-| Open Cowork | Electron | même module | `AiTron-Voice-Input` (base) |
+| Reasonix Studio 2.40.0 | `frontend-next\dist` | copie + balise | **porté et validé** |
+| Cline Desktop | Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
+| Open Cowork | Electron | même module | **porté** (base) |
+| AionUi 2.2.2 | `app.asar` | repack asar | **porté et validé** |
 
-La méthode en 8 étapes est la même : repérer les contrôles, déterminer le packaging, adapter
-le stockage et le preload, ancrer, vérifier, garder un retour arrière, documenter.
+Le projet a été porté sur ces quatre applications. **Seuls quelques petits réglages d'ancrage
+dans la fenêtre de chat sont nécessaires ; ce n'est pas une contrainte.** La méthode en
+8 étapes est la même : repérer les contrôles, déterminer le packaging, adapter le stockage et
+le preload, ancrer, vérifier, garder un retour arrière, documenter.
 
 ## 13. Vie privée et sécurité
 

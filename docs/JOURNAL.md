@@ -59,6 +59,12 @@
   export propre depuis l'arbre de travail, sans l'HTML de l'app dans l'historique.
 - **Tutoriel** — `TUTORIEL.fr.md` / `TUTORIAL.md` : ce que c'est, à quoi ça sert, installation,
   clé Gemini, usage, dépannage, variante Windows/locale, portabilité.
+- **Documentation / portage** — ajout de **Cline Desktop** aux applications portées, aux côtés
+  de Reasonix Studio, Open Cowork et AionUi. Seuls **quelques petits réglages d'ancrage** dans
+  la fenêtre de chat sont nécessaires ; ce n'est pas une contrainte. Ajout d'une comparaison
+  **Gemini / Windows Win+H** (précision, ponctuation, langues, hors ligne, coût) : Gemini est
+  le principal avantage qualité. Ajout de la **fiche agent FR/EN** (`FICHE-AGENT.fr.md` /
+  `AGENT-PLAYBOOK.md`) : 8 phases, prompt de départ, checklist 95 %, critères d'acceptation.
 - **À valider dans l'application** — CSP/en-têtes de l'hôte, permission micro, `fetch` Gemini,
   placement réel du micro, envoi pendant génération (interjection/file), pièce jointe +
   envoi auto. Reasonix Studio n'a pas été relancé pendant l'inspection.

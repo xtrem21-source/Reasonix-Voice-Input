@@ -23,6 +23,26 @@
 
 ---
 
+## Signature — ce qui fait la particularité du programme
+
+> **Le micro vit dans le chat, pas dans une autre application.** Clic gauche : enregistrer.
+> **Clic droit : le menu caché des réglages.** Le reste, c'est l'envoi comme tu veux.
+
+| Fonction | Comportement |
+|---|---|
+| **Clic gauche** | démarre l'enregistrement ; clique à nouveau pour arrêter et transcrire |
+| **Clic droit** | ouvre le **menu caché** : clé Gemini, modèle, langue, insertion auto, envoi auto, mot-clé d'envoi |
+| **Mode manuel** | le texte est inséré ; tu le relis, tu le modifies, tu envoies toi-même |
+| **Envoi automatique** | à l'arrêt, le texte est inséré **et envoyé tout seul** ; une pièce jointe part avec |
+| **Pièces jointes** | joins le fichier d'abord, puis dicte ; texte + fichier partent ensemble |
+| **File d'attente** | si l'agent travaille, le message est **mis en file** ; plusieurs messages peuvent attendre |
+| **Forcer / secours** | le module réessaie ~2 s ; si le bouton reste grisé, message d'erreur explicite + texte copié ; tu peux toujours cliquer envoyer/file |
+| **Pas d'application séparée** | aucun serveur, aucun compte, aucune fenêtre en plus ; le module ajoute seulement le micro |
+
+**Le point fort :** la transcription Gemini est nettement meilleure que la dictée Windows
+(Win+H), et le couple envoi automatique / file / pièces jointes permet de dicter plusieurs
+messages sans toucher la souris — tout en gardant le mode manuel pour relire.
+
 ## 0. Retour arrière — la garantie
 
 > **Le patch ne touche jamais l'hôte ni `app.asar`.** Il ne modifie que deux fichiers de
@@ -198,11 +218,12 @@ nouveau, revérifier les sélecteurs, puis réappliquer. Le journal garde la tra
 Le module est **agnostique de l'application** : seuls les sélecteurs, les clés de stockage et
 les API du preload changent. La démarche en 8 étapes est la même.
 
-| Application | Interface | Type de patch | Dépôt |
+| Application | Interface | Type de patch | État |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copie + une balise `<script>` | **ce dépôt** |
-| AionUi 2.2.2 | `resources\app.asar` | repack asar avec `--unpack` | `AiTron-Voice-Input` |
-| Open Cowork | application Electron | même module + sélecteurs | `AiTron-Voice-Input` (base) |
+| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copie + une balise `<script>` | **porté et validé** |
+| Cline Desktop | application Electron | même module + sélecteurs | **porté** ; ancrage à ajuster |
+| Open Cowork | application Electron | même module + sélecteurs | **porté** (base) |
+| AionUi 2.2.2 | `resources\app.asar` | repack asar avec `--unpack` | **porté et validé** |
 
 Les 8 étapes génériques sont dans [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) et
 [`docs/DEMARCHE.md`](docs/DEMARCHE.md) (FR). En résumé :
@@ -217,6 +238,15 @@ Les 8 étapes génériques sont dans [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md
 7. Vérifier : pas de gel du renderer, micro cliquable, test de clé, enregistrement, insertion,
    envoi auto, file d'attente.
 8. Garder un retour arrière vérifié (`.bak` + checksum, ou `app.asar.bak` + manifeste unpacked).
+
+**Le gros avantage :** la transcription Gemini est nettement plus précise et mieux ponctuée
+que la dictée Windows (**Win+H**), surtout pour les termes techniques et les messages longs.
+C'est l'atout principal du module ; Windows reste un repli hors ligne / sans clé.
+
+**Pour un agent :** [`FICHE-AGENT.fr.md`](FICHE-AGENT.fr.md) (FR) /
+[`AGENT-PLAYBOOK.md`](AGENT-PLAYBOOK.md) (EN) est une feuille de route à copier-coller. Elle
+couvre ~95 % du portage ; les 5 % restants sont les sélecteurs exacts et les mesures d'ancrage
+— de petits réglages, pas une contrainte.
 
 ## 11. Licence
 

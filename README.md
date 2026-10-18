@@ -22,6 +22,26 @@
 | **Status** | runtime-validated on 2.40.0: mic, Gemini key, auto-send, queue; see §Status |
 | **Module version** | 1 (`src/voice-input.reasonix.js`) |
 
+## Signature — what makes it different
+
+> **The mic lives in the chat, not in another app.** Left click records; **right-click opens
+> the hidden settings menu**; the rest is about sending exactly how you want.
+
+| Feature | Behavior |
+|---|---|
+| **Left click** | starts recording; click again to stop and transcribe |
+| **Right-click** | opens the **hidden menu**: Gemini key, model, language, auto-insert, auto-send, send keyword |
+| **Manual mode** | text is inserted; you review, edit, then send yourself |
+| **Auto-send** | at stop, text is inserted **and sent automatically**; an attached file goes with it |
+| **Attachments** | attach the file first, then dictate; text + file are sent together |
+| **Queue** | if the agent is working, the message is **queued**; several messages can wait |
+| **Force / fallback** | the module retries ~2 s; if the send button stays disabled, it shows an explicit error and copies the text; you can always click send/queue |
+| **No separate app** | no server, no account, no extra window; the module only adds the mic |
+
+**The strong point:** Gemini transcription is significantly better than Windows dictation
+(Win+H), and the auto-send/queue/attachment workflow means you can dictate several messages
+without touching the mouse — while keeping a manual mode when you want to review.
+
 ## Files
 
 | File | Role |
@@ -107,11 +127,12 @@ in the static frontend. The app reference `index.html` is **not** shipped in thi
 
 The module is app-agnostic; only the selectors, storage keys and preload APIs change.
 
-| App | UI location | Patch type | Repository |
+| App | UI location | Patch type | State |
 |---|---|---|---|
-| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copy + one script tag | **this repo** |
-| AionUi 2.2.2 | `resources\app.asar` | asar repack with `--unpack` | `AiTron-Voice-Input` |
-| Open Cowork | Electron app | same module + selectors | `AiTron-Voice-Input` (base) |
+| Reasonix Studio 2.40.0 | `frontend-next\dist` (plain) | copy + one script tag | **ported and validated** |
+| Cline Desktop | Electron app | same module + selectors | **ported**; anchoring to adjust |
+| Open Cowork | Electron app | same module + selectors | **ported** (base) |
+| AionUi 2.2.2 | `resources\app.asar` | asar repack with `--unpack` | **ported and validated** |
 
 The 8 generic steps are in [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) and
 [`docs/DEMARCHE.md`](docs/DEMARCHE.md) (FR):
@@ -125,6 +146,15 @@ The 8 generic steps are in [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) (EN) and
 6. Anchor the mic in the real action row; never anchor onto itself; float above when narrow.
 7. Verify: no renderer freeze, clickable mic, key test, recording, insertion, auto-send, queue.
 8. Keep a verified rollback (`.bak` + checksum, or `app.asar.bak` + unpacked manifest).
+
+> **Why Gemini?** Gemini transcription is significantly more accurate and better punctuated
+> than Windows dictation (**Win+H**), especially for technical terms and long messages. That
+> is the module's main advantage; Windows remains an offline/no-key fallback.
+
+> **For an agent:** [`AGENT-PLAYBOOK.md`](AGENT-PLAYBOOK.md) (EN) /
+> [`FICHE-AGENT.fr.md`](FICHE-AGENT.fr.md) (FR) is a copy-paste roadmap. It covers ~95% of the
+> port; the last 5% are exact selectors and anchoring measurements — small adjustments, not a
+> constraint.
 
 ## Status / to validate
 
