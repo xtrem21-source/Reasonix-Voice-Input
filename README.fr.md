@@ -1,10 +1,19 @@
 # Reasonix Voice Input
 
+[![Release](https://img.shields.io/github/v/release/xtrem21-source/Reasonix-Voice-Input?display_name=tag&sort=semver)](https://github.com/xtrem21-source/Reasonix-Voice-Input/releases)
+[![Licence : MIT](https://img.shields.io/github/license/xtrem21-source/Reasonix-Voice-Input)](LICENSE)
+[![Plateforme : Windows](https://img.shields.io/badge/platform-Windows-0078D4)](#)
+[![Non officiel](https://img.shields.io/badge/status-unofficial-orange)](#)
+
 > **Micro de dictée pour applications Electron :** Gemini transcrit, insère et envoie
 > (auto ou manuel), avec pièces jointes, file d'attente et menu caché au clic droit. Porté
 > sur Reasonix Studio, Cline Desktop, Open Cowork et AionUi.
 >
 > **Commence ici :** [Tutoriel (FR)](TUTORIEL.fr.md) · [Tutorial (EN)](TUTORIAL.md).
+
+![Saisie vocale dans le composeur](docs/assets/voice-input-mockup.svg)
+
+*Mockup — aucune donnée personnelle.*
 
 | | |
 |---|---|

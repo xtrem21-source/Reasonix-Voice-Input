@@ -1,10 +1,19 @@
 # Reasonix Voice Input
 
+[![Release](https://img.shields.io/github/v/release/xtrem21-source/Reasonix-Voice-Input?display_name=tag&sort=semver)](https://github.com/xtrem21-source/Reasonix-Voice-Input/releases)
+[![License: MIT](https://img.shields.io/github/license/xtrem21-source/Reasonix-Voice-Input)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D4)](#)
+[![Unofficial](https://img.shields.io/badge/status-unofficial-orange)](#)
+
 > **Voice-input mic for Electron chat apps:** Gemini transcribes, inserts and sends (auto or
 > manual), with attachments, queue and a hidden right-click menu. Ported to Reasonix Studio,
 > Cline Desktop, Open Cowork and AionUi.
 >
 > **Start here:** [Tutorial](TUTORIAL.md) · [Tutoriel (FR)](TUTORIEL.fr.md).
+
+![Voice input in the composer](docs/assets/voice-input-mockup.svg)
+
+*Mockup — no personal data.*
 
 > **Unofficial project.** Not affiliated with, endorsed by, or supported by Reasonix Studio or
 > DeepSeek. It patches a local copy of the app's static UI, is provided **as is**, without
