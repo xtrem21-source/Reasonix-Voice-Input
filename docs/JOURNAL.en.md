@@ -47,3 +47,20 @@
   starter prompt, 95% checklist, acceptance criteria.
 - **To validate in the app** — runtime CSP, mic permission, Gemini fetch, send during
   generation, attachment + auto-send. Reasonix Studio was not closed during inspection.
+
+## 2026-10-19
+
+- **Symptom** — in the active chat, the mic disappears as soon as a question is sent; it
+  stays visible in the other chat ("est-ce qu'on peut parler 2").
+- **Cause** — the module looked up the **first** `button[data-action="session.send"]` on the
+  page. During generation, the active chat's send button is replaced by `session.stop`; the
+  script therefore anchored to the other chat's send button, or hid itself when no button was
+  visible.
+- **Fix** — `activeComposer()` + `composerRoot()`: the lookup is scoped to the visible/focused
+  composer; `findSubmitButton(root)` and `findStopButton(root)` use that scope; a `focusin`
+  listener follows pane changes; if the send button disappears before `session.stop` is
+  rendered, the mic stays visible instead of being hidden.
+- **Tests** — `node --check` OK; two-pane DOM fixture: the old module anchors to pane A while
+  pane B is focused, the new one anchors to pane B's stop button; moving focus A → B moves the
+  mic; an AionUi fixture (with and without focus) still anchors to `send-button-custom`.
+  Validated in Reasonix Studio 2.40.0 after relaunch.

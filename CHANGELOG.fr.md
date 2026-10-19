@@ -3,6 +3,17 @@
 Les changements notables de ce package sont documentés ici.
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.4] — 2026-10-19
+
+### Corrigé
+- **Micro ancrée dans le mauvais chat.** Avec deux chats/panes ouverts, le module prenait le
+  premier bouton `session.send` de la page. Quand le chat actif passait en génération, son
+  bouton d'envoi était remplacé par `session.stop` : la micro disparaissait du chat actif (ou
+  restait dans l'autre). La recherche est désormais limitée au composeur actif/visible, la
+  micro s'ancre sur `session.stop` pendant la génération, suit le changement de pane au focus
+  et reste visible pendant la transition envoi → stop. Validé sur une réplique DOM à deux
+  panes et dans Reasonix Studio 2.40.0.
+
 ## [0.1.3] — 2026-10-18
 
 ### Ajouté

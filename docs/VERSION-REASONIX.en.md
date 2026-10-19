@@ -23,6 +23,7 @@
 | Role | Selector |
 |---|---|
 | Composer | `textarea[data-action-keydown="session.send"][role="combobox"]` |
+| Active composer | visible/focused textarea; buttons are looked up in its container, not the whole page (0.1.4) |
 | Send | `button.btn.send[data-action="session.send"]` |
 | Stop | `button.btn.stop[data-action="session.stop"]` |
 | Queue | `queue.send-now`, `queue.cancel`, `queue.edit`, `queue.pause`, `queue.retry` |

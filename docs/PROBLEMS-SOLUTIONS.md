@@ -29,6 +29,7 @@
 | Permission micro | renderer sandboxé | **à tester** : `getUserMedia` au premier clic |
 | Envoi pendant génération | `session.send` devient « 插话 » (interjection) | **à tester** : interjection vs file (`queue.*`) |
 | Mise à jour de l'app | `frontend-next` remplacé | `REAPPLIQUER-MIC-REASONIX.bat` + `VERIFIER-MIC-REASONIX.bat` + journal |
+| Micro qui disparaît dans le chat actif | le script prenait le premier `session.send` de la page ; avec deux chats, il s'ancrait sur l'autre ; pendant une génération, le bouton d'envoi du chat actif est remplacé par `session.stop` | recherche limitée au composeur actif/visible, `focusin` pour suivre le pane, ancre sur `session.stop`, micro maintenue visible pendant la transition (0.1.4) |
 
 ## Règle de mise à jour
 

@@ -21,7 +21,7 @@
 |---|---|
 | **Application** | Reasonix Studio **2.40.0** (Electron + hôte local) |
 | **Interface patchée** | `resources\frontend-next\dist` — **dossier plain, aucun asar à réemballer** |
-| **État** | package prêt ; **tests runtime à faire** (CSP, micro, envoi pendant génération) |
+| **État** | validé en runtime sur 2.40.0 : micro, clé Gemini, envoi auto, file, ancrage multi-pane ; voir §10 |
 > **Projet non officiel.** Non affilié à Reasonix Studio ni à DeepSeek. Le patch modifie une
 > copie locale de l'interface ; il est fourni **tel quel**, sans garantie, et peut casser à
 > chaque mise à jour. Aucune clé API n'est incluse : tu fournis la tienne.

@@ -30,7 +30,7 @@
 |---|---|
 | **App** | Reasonix Studio **2.40.0** (Electron + local host) |
 | **Patched UI** | `resources\frontend-next\dist` — **plain files, no asar repack** |
-| **Status** | runtime-validated on 2.40.0: mic, Gemini key, auto-send, queue; see §Status |
+| **Status** | runtime-validated on 2.40.0: mic, Gemini key, auto-send, queue, multi-pane anchoring; see §Status |
 | **Module version** | 1 (`src/voice-input.reasonix.js`) |
 
 ## Signature — what makes it different

@@ -3,6 +3,17 @@
 All notable changes to this patch package are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.4] — 2026-10-19
+
+### Fixed
+- **Mic anchored to the wrong chat.** With two chats/panes open, the module took the first
+  `session.send` button of the page. When the active chat entered generation, its send button
+  was replaced by `session.stop`, so the mic disappeared from the active chat (or stayed on the
+  other one). The lookup is now scoped to the active/visible composer, anchors to
+  `session.stop` during generation, follows focus between panes, and keeps the mic visible
+  during the send → stop transition. Validated on a two-pane DOM fixture and in Reasonix
+  Studio 2.40.0.
+
 ## [0.1.3] — 2026-10-18
 
 ### Added

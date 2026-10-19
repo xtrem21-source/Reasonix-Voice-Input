@@ -376,6 +376,15 @@
     });
     // Si la barre de saisie bouge (scroll interne du chat), le panneau doit suivre.
     window.addEventListener('scroll', function () { positionOverlay(root); }, true);
+    // Changer de pane au clavier/souris doit deplacer le micro avec le focus.
+    document.addEventListener('focusin', function (e) {
+      var t = e.target;
+      var area = t && (t.tagName === 'TEXTAREA' ? t : (t.closest && t.closest('textarea')));
+      if (area && isVisible(area)) {
+        st.composer = area;
+        mountAnchored();
+      }
+    }, true);
     return st.ui;
   }
 
@@ -480,30 +489,68 @@
   // 2) cas AionUi / React sans <form> : on note les boutons de la barre de saisie
   //    (recherche en remontant depuis le textarea, profondeur max 5) et on prend
   //    le meilleur candidat, en excluant toujours notre propre micro.
-  function findSubmitButton() {
+  // Le composeur actif : celui qui a le focus, sinon un textarea visible.
+  // Deux panes peuvent coexister dans Reasonix Studio ; sans ce filtre,
+  // querySelector prenait le premier bouton de la page et la micro partait
+  // dans l'autre conversation.
+  function activeComposer() {
+    var active = document.activeElement;
+    if (active) {
+      if (active.tagName === 'TEXTAREA' && isVisible(active)) return active;
+      if (active.closest) {
+        var inside = active.closest('textarea');
+        if (inside && isVisible(inside)) return inside;
+      }
+    }
+    var areas = [].slice.call(document.querySelectorAll('textarea[data-action-keydown="session.send"]')).filter(isVisible);
+    if (areas.length === 1) return areas[0];
+    if (areas.length > 1) {
+      if (st.composer && areas.indexOf(st.composer) !== -1) return st.composer;
+      return areas[areas.length - 1];
+    }
+    return null;
+  }
+
+  // Conteneur du composeur : le plus proche ancetre qui porte un bouton
+  // d'envoi ou d'arret. C'est la frontiere qui manquait.
+  function composerRoot(area) {
+    if (!area) return null;
+    var node = area.parentElement;
+    for (var i = 0; i < 10 && node; i++, node = node.parentElement) {
+      if (node.querySelector && node.querySelector('button[data-action="session.send"], button[data-action="session.stop"], button.btn.send, button.btn.stop, button.send-button-custom')) {
+        return node;
+      }
+    }
+    return (area.closest && area.closest('form')) || area.parentElement || null;
+  }
+
+  function findSubmitButton(root) {
+    var scope = root || composerRoot(activeComposer()) || document;
+    var area = scope.querySelector ? scope.querySelector('textarea[data-action-keydown="session.send"]') : null;
+    if (!area) area = activeComposer();
+    if (!area) area = findInput();
     // Reasonix Studio : le bouton d'envoi est explicite, quelle que soit la langue.
-    var direct = document.querySelector('button[data-action="session.send"], button.btn.send');
+    var direct = scope.querySelector('button[data-action="session.send"], button.btn.send');
     if (direct && !isOwnNode(direct)) {
       var dr = direct.getBoundingClientRect();
       if (dr.width > 8 && dr.height > 8) return direct;
     }
-    // Pendant une generation, Reasonix peut retirer le bouton d'envoi et afficher
+    // Pendant une generation, Reasonix retire le bouton d'envoi et affiche
     // session.stop. Ne pas choisir un bouton d'outil au hasard : l'ancrage
     // utilisera le bouton d'arret, et submitChat ne cliquera rien.
-    var stop = document.querySelector('button[data-action="session.stop"], button.btn.stop');
+    var stop = scope.querySelector('button[data-action="session.stop"], button.btn.stop');
     if (stop) return null;
-    var reasonixComposer = document.querySelector('textarea[data-action-keydown="session.send"]');
-    if (reasonixComposer) return null;
-    var area = findInput();
-    if (!area) return null;
-    var form = area.closest && area.closest('form');
+    // Reasonix : si CE composeur est bien celui de session.send et qu'il n'a
+    // pas de bouton d'envoi, on ne va pas chercher ailleurs.
+    if (area && area.getAttribute('data-action-keydown') === 'session.send') return null;
+    var form = area && area.closest ? area.closest('form') : null;
     if (form) {
       var b = form.querySelector('button[type="submit"]');
       if (b && !isOwnNode(b)) return b;
     }
-    var scope = area.parentElement;
-    for (var d = 0; d < 5 && scope; d++, scope = scope.parentElement) {
-      var btns = scope.querySelectorAll('button');
+    var toolScope = area ? area.parentElement : null;
+    for (var d = 0; d < 5 && toolScope; d++, toolScope = toolScope.parentElement) {
+      var btns = toolScope.querySelectorAll('button');
       var best = null;
       var bestScore = -1;
       for (var i = btns.length - 1; i >= 0; i--) {
@@ -529,8 +576,9 @@
 
   // Bouton d'arret affiche pendant une generation : sert uniquement a ancrer le
   // micro a droite, jamais a envoyer.
-  function findStopButton() {
-    var s = document.querySelector('button[data-action="session.stop"], button.btn.stop');
+  function findStopButton(root) {
+    var scope = root || composerRoot(activeComposer()) || document;
+    var s = scope.querySelector('button[data-action="session.stop"], button.btn.stop');
     if (!s || isOwnNode(s)) return null;
     var r = s.getBoundingClientRect();
     return (r.width > 8 && r.height > 8) ? s : null;
@@ -575,12 +623,15 @@
     var dup = document.getElementById('ocVoiceAnchor');
     if (dup && dup !== anchor) dup.remove();
 
-    var submit = findSubmitButton();
+    var area = activeComposer();
+    var root = composerRoot(area);
+    if (area) st.composer = area;
+    var submit = findSubmitButton(root);
     // defense en profondeur : ne jamais s'ancrer sur soi-meme
     if (submit && (submit === st.ui.btn || anchor.contains(submit))) submit = null;
     // Pendant une generation, ancrer le micro a cote du bouton d'arret (le
     // bouton d'envoi peut etre retire) ; submitChat, lui, ne clique jamais stop.
-    if (!submit) submit = findStopButton();
+    if (!submit) submit = findStopButton(root);
     var target = submit ? anchorTarget(submit) : null;
     if (target && target.group) {
       var group = target.group;
@@ -636,6 +687,27 @@
         if (!st.anchorLogged) logWarn('ancrage REUSSI (juste a droite de la fleche d\'envoi)');
       }
       st.anchorLogged = true;
+      positionOverlay(st.ui.root);
+      return;
+    }
+    // Transition envoi -> stop, rendu React pas encore pose : si un composeur
+    // visible existe, on GARDE le micro au lieu de le cacher. Il ne disparait
+    // que s'il n'y a vraiment aucun composeur a l'ecran.
+    if (area) {
+      var ar = area.getBoundingClientRect();
+      try { document.body.appendChild(anchor); } catch (e) {}
+      anchor.style.position = 'fixed';
+      anchor.style.left = 'auto';
+      anchor.style.top = 'auto';
+      anchor.style.right = Math.max(8, window.innerWidth - ar.right + 8) + 'px';
+      anchor.style.bottom = Math.max(8, window.innerHeight - ar.bottom + 2) + 'px';
+      anchor.style.width = '32px';
+      anchor.style.height = '32px';
+      anchor.style.margin = '0';
+      anchor.style.zIndex = '2147483000';
+      hideAnchor(false);
+      st.anchored = true;
+      st.micFixed = true;
       positionOverlay(st.ui.root);
       return;
     }
@@ -1210,6 +1282,9 @@
   }
 
   function findInput() {
+    // Priorite au composeur actif : deux panes peuvent coexister.
+    var active = activeComposer();
+    if (active) return active;
     // Reasonix Studio : le composeur est un textarea data-action-keydown=session.send.
     var preferred = document.querySelector('textarea[data-action-keydown="session.send"], textarea[role="combobox"]');
     if (preferred && isVisible(preferred)) return preferred;
@@ -1249,7 +1324,7 @@
   }
 
   function insertText(text) {
-    var el = findInput();
+    var el = activeComposer() || findInput();
     if (!el) return false;
     var prev = el.value || '';
     var next = prev.trim() ? prev.replace(/\s+$/, '') + ' ' + text : text;
@@ -1317,7 +1392,7 @@
   // Retourne 'sent', 'queued' ou false. L'appelant retente pendant ~2 s si le
   // bouton est encore grise (upload/rendu React).
   function submitChat() {
-    var btn = findSubmitButton();
+    var btn = findSubmitButton(composerRoot(activeComposer()));
     if (btn && !btn.disabled) {
       try {
         btn.click();

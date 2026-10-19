@@ -29,6 +29,7 @@
 | Mic permission | sandboxed renderer | runtime-validated |
 | Send during generation | `session.send` becomes “插话” | interject validated; queue behavior depends on the app state |
 | App update | `frontend-next` replaced | `REAPPLIQUER-MIC-REASONIX.bat` + `VERIFIER...` + journal |
+| Mic disappears from the active chat | the module took the first `session.send` of the page; with two chats it anchored to the other one; during generation the active chat's send button is replaced by `session.stop` | scope the lookup to the active/visible composer, follow panes on `focusin`, anchor to `session.stop`, keep the mic visible during the transition (0.1.4) |
 | No restore point | risk of no rollback | `PREPARER-SAUVEGARDE...` + `.bak` + `.sha256` + `old/`; `RESTAURER...`; verified before write |
 
 ## Update rule

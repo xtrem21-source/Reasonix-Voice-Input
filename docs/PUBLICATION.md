@@ -34,7 +34,8 @@ gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote
 ```
 
 Le dépôt public `xtrem21-source/Reasonix-Voice-Input` est **publié** (branche `main`,
-commit `3d44a1c`, 2026-10-18) et accessible avec le credential Git local.
+mise à jour **0.1.4** le 2026-10-19 ; voir `git log -1` pour le commit courant) et accessible
+avec le credential Git local.
 
 ## English
 
@@ -71,4 +72,5 @@ gh repo create xtrem21-source/Reasonix-Voice-Input --private --source . --remote
 ```
 
 The public `xtrem21-source/Reasonix-Voice-Input` repository is **published** (`main` branch,
-commit `3d44a1c`, 2026-10-18) and accessible with the local Git credential.
+**0.1.4** update on 2026-10-19; see `git log -1` for the current commit) and accessible with
+the local Git credential.

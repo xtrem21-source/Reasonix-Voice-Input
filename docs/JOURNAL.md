@@ -68,3 +68,21 @@
 - **À valider dans l'application** — CSP/en-têtes de l'hôte, permission micro, `fetch` Gemini,
   placement réel du micro, envoi pendant génération (interjection/file), pièce jointe +
   envoi auto. Reasonix Studio n'a pas été relancé pendant l'inspection.
+
+## 2026-10-19
+
+- **Symptôme** — dans un chat actif, la micro disparaît dès qu'une question est envoyée ;
+  elle reste visible dans l'autre chat (« est-ce qu'on peut parler 2 »).
+- **Cause** — le module cherchait le **premier** `button[data-action="session.send"]` de la
+  page. Pendant une génération, le bouton d'envoi du chat actif est remplacé par
+  `session.stop` ; le script s'ancrait donc sur le bouton d'envoi de l'autre chat, ou se
+  masquait si aucun bouton n'était visible.
+- **Correctif** — `activeComposer()` + `composerRoot()` : la recherche est limitée au
+  composeur visible/focalisé ; `findSubmitButton(root)` et `findStopButton(root)` utilisent
+  ce périmètre ; un écouteur `focusin` suit le changement de pane ; si le bouton d'envoi
+  disparaît avant que `session.stop` soit rendu, la micro reste visible au lieu d'être
+  masquée.
+- **Tests** — `node --check` OK ; réplique DOM à deux panes : l'ancien module ancre sur le
+  pane A alors que le pane B a le focus, le nouveau ancre sur le bouton stop du pane B ; le
+  passage du focus A → B déplace la micro ; un fixture AionUi (avec et sans focus) ancre
+  toujours sur `send-button-custom`. Validé dans Reasonix Studio 2.40.0 après relance.
